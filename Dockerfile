@@ -5,8 +5,9 @@ RUN apt-get -y update
 RUN apt-get -y install default-jdk
 RUN apt-get -y install maven
 RUN mkdir /tmp/boxfuse-sample-java-war-hello
-COPY /tmp/boxfuse-sample-java-war-hello/ /tmp/boxfuse-sample-java-war-hello/
-RUN maven package /tmp/boxfuse-sample-java-war-hello
+RUN cd /tmp/
+RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+RUN maven package /tmp/boxfuse-sample-java-war-hello/
 #Run webapp
 #FROM tomcat:8.0
 #COPY /tmp/boxfuse-sample-java-war-hello/target/*.war /usr/local/tomcat/webapps/
