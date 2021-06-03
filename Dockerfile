@@ -1,6 +1,6 @@
 FROM maven:3.5.2-jdk-8-alpine AS COMPILEWAR
-COPY /tmp/boxfuse-sample-java-war-hello/pom.xml /tmp/
-COPY /tmp/boxfuse-sample-java-war-hello/src /tmp/src/
+COPY ./boxfuse-sample-java-war-hello/pom.xml /tmp/
+COPY ./boxfuse-sample-java-war-hello/src /tmp/src/
 WORKDIR /tmp/
 RUN mvn package
 
