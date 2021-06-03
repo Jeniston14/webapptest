@@ -7,3 +7,4 @@ RUN mvn package
 FROM tomcat:9.0-jre8-alpine
 COPY --from=COMPILEWAR /tmp/target/*.war $CATALINA_HOME/webapps/
 EXPOSE 8080
+CMD ["catalina.sh","run"]
