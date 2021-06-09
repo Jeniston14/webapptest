@@ -1,10 +1,13 @@
 version: '3'
 
 serivces:
+
   compile:
-    build: ./Dockerfile1
+    build: 
+      context: .
     volumes:
       - ./war_data/target/:/tmp/
+
    web:
     image: tomcat
     ports:
