@@ -1,0 +1,15 @@
+- name: deploying maven
+  hosts: mavenserver
+  become: yes
+  tasks:
+   - name: install maven
+     apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time=3600
+     with_items:
+      - maven
+      - git
+   - name: git add boxfuse
+     git: repo=https://github.com/boxfuse/boxfuse-sample-java-war-hello.git dest=/webapps/
+   - name: chdir and mvn package
+     command: mvn package
+     args:
+       chdir: /webapps
