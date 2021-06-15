@@ -39,9 +39,10 @@
       remote_src: yes
   - name: start tomcat services
     command: nohup /usr/local/apache-tomcat-9.0.48/bin/startup.sh
-  - name: copy war compile server
+
+  - name: copy war from webserver
+    hosts: mavenserver
     synchronize: 
-      mode: pull
       src: /deployapps/hello-1.0.war
       dest: /usr/local/apache-tomcat-9.0.48/webapps/
-    delegate_to: mavenserver  
+    delegate_to: webserver
