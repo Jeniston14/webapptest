@@ -13,7 +13,7 @@
      command: mvn package
      args:
        chdir: /webapps
-    - name: move war 
+   - name: move war 
       command: mv /webapps/target/hello-1.0.war /deployapps/
 
 - name: deploying web server
