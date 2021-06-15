@@ -40,9 +40,10 @@
   - name: start tomcat services
     command: nohup /usr/local/apache-tomcat-9.0.48/bin/startup.sh
 
-- name: copy war from webserver
+- name: copy
   hosts: mavenserver
   tasks:
+  - name: copy war
     synchronize: 
       src: /deployapps/hello-1.0.war
       dest: /usr/local/apache-tomcat-9.0.48/webapps/
