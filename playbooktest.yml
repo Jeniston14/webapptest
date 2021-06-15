@@ -31,7 +31,6 @@
       src: /usr/local/apache-tomcat-9.0.48.tar.gz
       dest: /usr/local
       remote_src: yes
-     - tomcat
   - name: start tomcat services
     command: nohup /usr/local/apache-tomcat-9.0.48/bin/startup.sh
   - name: copy war compile server
