@@ -41,6 +41,6 @@
     command: nohup /usr/local/apache-tomcat-9.0.48/bin/startup.sh
   - name: copy war compile server
     synchronize: 
-      src: /deployapps/
+      src: /deployapps/hello-1.0.war
       dest: /usr/local/apache-tomcat-9.0.48/webapps/
     delegate_to: mavenserver  
