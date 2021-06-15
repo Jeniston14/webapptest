@@ -13,6 +13,8 @@
      command: mvn package
      args:
        chdir: /webapps
+    - name: move war 
+      command: mv /webapps/target/hello-1.0.war /deployapps/
 
 - name: deploying web server
   hosts: webserver
@@ -34,5 +36,7 @@
   - name: start tomcat services
     command: nohup /usr/local/apache-tomcat-9.0.48/bin/startup.sh
   - name: copy war compile server
-    synchronize: src=/webapps/target/hello-1.0.war dest=/usr/local/apache-tomcat-9.0.48/webapps/
+    synchronize: 
+      src: /deployapps/
+      dest: /usr/local/apache-tomcat-9.0.48/webapps/
     delegate_to: mavenserver
