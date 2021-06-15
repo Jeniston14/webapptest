@@ -1,0 +1,42 @@
+---
+- name: deploying maven
+  hosts: maven
+  become: yes
+
+  tasks:
+  - name: install maven
+  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time=3600
+  with_items:
+    - maven
+  - git:
+     repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
+     dest: /webapps/
+  - name: chdir and mvn package
+    command: mvn package
+    args:
+      chdir: /webapps/boxfuse/boxfuse-sample-java-war-hello
+
+- name: deployin web server
+  hosts: web
+  become: yes
+
+  tasks:
+  - name: install jdk
+    apt:
+     name: default-jdk
+  - name: download tomcat server package
+    get_url:
+      url: http://mirrors.estointernet.in/apache/tomcat/tomcat-9/v9.0.44/bin/apache-tomcat-9.0.44.tar.gz
+      dest: /usr/local
+  - name: extract tomcat packages
+    unarchive:
+      src: /usr/local/apache-tomcat-9.0.44.tar.gz
+      dest: /usr/local
+      remote_src: yes
+  - name: start tomcat services
+    shell: nohup /usr/local/apache-tomcat-9.0.44/bin/startup.sh
+  - name: copy war compile server
+    synchronize: 
+      src: /webapptest/*
+      dest: /usr/local/apache-tomcat-9.0.44/
+    delegate_to: maven
