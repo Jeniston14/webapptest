@@ -36,5 +36,5 @@
   - name: copy war compile server
     synchronize: 
       src: /webapptest/target/hello-1.0.war
-      dest: /usr/local/apache-tomcat-9.0.48/
+      dest: /usr/local/apache-tomcat-9.0.48/webapps/
     delegate_to: mavenserver
