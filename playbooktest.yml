@@ -42,4 +42,4 @@
     synchronize: 
       src: /deployapps/
       dest: /usr/local/apache-tomcat-9.0.48/webapps/
-    delegate_to: mavenserver
+    delegate_to: mavenserver  
