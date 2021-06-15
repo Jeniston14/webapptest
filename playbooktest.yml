@@ -14,8 +14,9 @@
      args:
        chdir: /webapps
    - name: create dir from war
-     path: /deployapps
-     state: directory
+     file:
+       path: /deployapps
+       state: directory
    - name: move war 
      command: mv /webapps/target/hello-1.0.war /deployapps/
 
