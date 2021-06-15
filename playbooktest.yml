@@ -17,7 +17,7 @@
      path: /deployapps
      state: directory
    - name: move war 
-      command: mv /webapps/target/hello-1.0.war /deployapps/
+     command: mv /webapps/target/hello-1.0.war /deployapps/
 
 - name: deploying web server
   hosts: webserver
