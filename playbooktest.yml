@@ -20,6 +20,8 @@
   tasks:
   - name: install jdk
     apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time=3600
+    with_items:
+     - default-jdk
     - name: download tomcat server package
     get_url:
       url: http://mirrors.estointernet.in/apache/tomcat/tomcat-9/v9.0.44/bin/apache-tomcat-9.0.44.tar.gz
