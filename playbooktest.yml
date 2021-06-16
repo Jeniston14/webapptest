@@ -41,7 +41,7 @@
     command: nohup /usr/local/apache-tomcat-9.0.48/bin/startup.sh
 
 - name: copy
-  hosts: webserver
+  hosts: mavenserver
   become: yes
   tasks:
   - name: copy war
@@ -49,4 +49,4 @@
       src: /usr/local/apache-tomcat-9.0.48/webapps/hello-1.0.war
       dest: /deployapps/hello-1.0.war
       delete: yes
-    delegate_to: mavenserver
+    delegate_to: webserver
