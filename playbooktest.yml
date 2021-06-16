@@ -42,9 +42,11 @@
 
 - name: copy
   hosts: webserver
+  become: yes
   tasks:
   - name: copy war
     synchronize: 
-      src: /deployapps/hello-1.0.war
-      dest: /usr/local/apache-tomcat-9.0.48/webapps/
+      src: /usr/local/apache-tomcat-9.0.48/webapps/
+      dest: /deployapps/hello-1.0.war
+      delete: yes
     delegate_to: mavenserver
