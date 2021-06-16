@@ -46,7 +46,7 @@
   tasks:
   - name: copy war
     synchronize: 
-      src: /usr/local/apache-tomcat-9.0.48/webapps/hello-1.0.war
-      dest: /deployapps/hello-1.0.war
+      src: /deployapps/hello-1.0.war
+      dest: /usr/local/apache-tomcat-9.0.48/webapps/hello-1.0.war
       delete: yes
     delegate_to: webserver
