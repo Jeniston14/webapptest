@@ -1,0 +1,4 @@
+# Created by cloud-init v. 21.4-0ubuntu1~18.04.1 on Tue, 23 Nov 2021 22:16:35 +0000
+
+# User rules for koptev
+koptev ALL=(ALL) NOPASSWD:ALL
