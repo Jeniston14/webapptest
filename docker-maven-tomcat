@@ -1,1 +1,8 @@
-FROM maven
+FROM maven:3.3-jdk-8 AS build
+WORKDIR /usr/local/maven-package
+RUN wget https://github.com/jabedhasan21/java-hello-world-with-maven/blob/master/pom.xml
+RUN mnv package 
+
+FROM tomcat:9.0-jre8-alpine
+COPY --from=build /usr/local/maven-package/target/hello*.war $CATALINA_HOME/webapps/
+EXPOSE 8080
