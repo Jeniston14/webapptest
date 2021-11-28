@@ -6,7 +6,7 @@ RUN wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.13/bin/apache-tomcat-10
 tar xvf apache-tomcat*.tar.gz && \
 rm -rf apache-tomcat*.tar.gz && \
 mkdir /usr/local/tomcat && \
-cp -r /tmp/apache-tomcat*/apache-tomcat*/ /usr/local/tomcat/
+cp -r /tmp/apache-tomcat*/* /usr/local/tomcat/
 RUN git clone https://github.com/efsavage/hello-world-war 
 WORKDIR /tmp/hello-world-war
 RUN mvn package
