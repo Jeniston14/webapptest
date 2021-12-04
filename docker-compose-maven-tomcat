@@ -7,13 +7,13 @@ services:
       dockerfile: dockerfile-maven
   tomcat:
     image: tomcat:alpine
-    container_name: tomcat-conainer
+    container_name: tomcat-container
     ports:
       - 8080:8080
     volumes:
-      - ${DIRWARFILE}:${WEBAPPS_DIR}
+      - ./wardir: ${DIRWARFILE}
     depends_on:
-      - maven-container
+      - maven
     restart: always
     environment:
       - WEBAPPS_DIR: "${WEBAPPS_DIR}"
