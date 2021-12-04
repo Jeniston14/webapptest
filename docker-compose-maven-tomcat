@@ -7,13 +7,14 @@ services:
       dockerfile: dockerfile-maven
     tomcat:
       image: tomcat:alpine
+      container_name: tomcat-conainer
       ports:
         - 8080:8080
       volumes:
-        - ./tmp/$DIRWARFILE:/$CATALINA_HOME/webapps
+        - ${DIRWARFILE}:${WEBAPPS_DIR}
       depends_on:
         - maven
       restart: always
       environment:
-        - ${CATALINA_HOME}:/usr/local/tomcat/webapps
+        - ${WEBAPPS_DIR}:/usr/local/tomcat/webapps
         - ${DIRWARFILE}:/tmp/webapps/target/hello-world-war-1.0.0
