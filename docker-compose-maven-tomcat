@@ -13,7 +13,7 @@ services:
     volumes:
       - ${DIRWARFILE}:${WEBAPPS_DIR}
     depends_on:
-      - maven
+      - maven-container
     restart: always
     environment:
       - WEBAPPS_DIR: "${WEBAPPS_DIR}"
