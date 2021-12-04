@@ -5,16 +5,16 @@ services:
     build:
       context: .
       dockerfile: dockerfile-maven
-    tomcat:
-      image: tomcat:alpine
-      container_name: tomcat-conainer
-      ports:
-        - 8080:8080
-      volumes:
-        - ${DIRWARFILE}:${WEBAPPS_DIR}
-      depends_on:
-        - maven
-      restart: always
-      environment:
-        - ${WEBAPPS_DIR}:/usr/local/tomcat/webapps
-        - ${DIRWARFILE}:/tmp/webapps/target/hello-world-war-1.0.0
+  tomcat:
+    image: tomcat:alpine
+    container_name: tomcat-conainer
+    ports:
+      - 8080:8080
+    volumes:
+      - ${DIRWARFILE}:${WEBAPPS_DIR}
+    depends_on:
+      - maven
+    restart: always
+    environment:
+      - WEBAPPS_DIR: "${WEBAPPS_DIR}"
+      - DIRWARFILE: "${DIRWARFILE}"
