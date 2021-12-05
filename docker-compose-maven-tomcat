@@ -5,13 +5,15 @@ services:
     build:
       context: .
       dockerfile: dockerfile-maven
+    volumes:
+      - /root/wardir/:/tmp/hello-world-war
   tomcat:
     image: tomcat:alpine
     container_name: tomcat-container
     ports:
       - 8080:8080
     volumes:
-      - ./wardir: ${DIRWARFILE}
+      - 
     depends_on:
       - maven
     restart: always
