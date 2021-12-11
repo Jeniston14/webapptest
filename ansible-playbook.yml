@@ -22,4 +22,4 @@
       dest: "{{app_dir}}"
       clone: yes
   - name: build war app
-    shell: mvn package -f "{{app_dir}}"/boxfuse-sample-java-war-hello/pom.xml
+    shell: mvn package -f "{{app_dir}}"
