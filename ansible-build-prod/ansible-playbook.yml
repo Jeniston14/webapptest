@@ -11,28 +11,28 @@
   tasks:
   - name: install packages-build-host
     apt:
-      name: "{{item}}"
+      name: "{{ item }}"
       state: latest
       update_cache: yes
     with_items:
-      "{{packages-build-host}}"
+      "{{ packages-build-host }}"
   - name: clone pom.xml
     git:
-      repo: "{{repo_url}}"
-      dest: "{{app_dir}}"
+      repo: "{{ repo_url }}"
+      dest: "{{ app_dir }}"
       clone: yes
   - name: build war app
-    shell: mvn package -f "{{app_dir}}"
+    shell: mvn package -f "{{ app_dir }}"
 - hosts: prod-host
   become: yes
   tasks:
   - name: install packages-prod-host
     apt:
-      name: "{{item}}"
+      name: "{{ item }}"
       state: latest
       update_cache: yes
     with_items:
-      "{{packages-build-host[1]}}"
+      "{{ packages-build-host[1] }}"
   - name: copy tomcat-install.sh
     script: ./tomcat-install.sh
   - name: copy unit file
