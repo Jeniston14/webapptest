@@ -7,6 +7,9 @@
       - maven
     app_dir: /root/project
     repo_url: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+    packages-prod-host: 
+      - git
+      - default-jdk
   become: yes
   tasks:
   - name: install packages-build-host
@@ -24,10 +27,6 @@
   - name: build war app
     shell: mvn package -f "{{app_dir}}"
 - hosts: prod-host
-  vars:
-    packages-prod-host: 
-      - git
-      - default-jdk
   become: yes
   tasks:
   - name: install packages-prod-host
