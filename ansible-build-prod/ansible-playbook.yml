@@ -1,10 +1,13 @@
 ---
 - hosts: build-host
   vars:
-    packages: 
+    packages_build: 
       - git
       - default-jdk
       - maven
+    packages_host: 
+      - git
+      - default-jdk
     app_dir: /root/project
     repo_url: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
   become: yes
@@ -15,7 +18,7 @@
       state: latest
       update_cache: yes
     with_items:
-      "{{ packages }}"
+      "{{ packages_build }}"
   - name: clone pom.xml
     git:
       repo: "{{ repo_url }}"
@@ -32,7 +35,7 @@
       state: latest
       update_cache: yes
     with_items:
-      "{{ packages[1] }}"
+      "{{ packages_host }}"
   - name: copy tomcat-install.sh
     script: ./tomcat-install.sh
   - name: copy unit file
