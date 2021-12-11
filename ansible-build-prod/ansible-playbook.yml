@@ -7,9 +7,6 @@
       - maven
     app_dir: /root/project
     repo_url: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-    packages-prod-host: 
-      - git
-      - default-jdk
   become: yes
   tasks:
   - name: install packages-build-host
@@ -35,7 +32,7 @@
       state: latest
       update_cache: yes
     with_items:
-      "{{packages-prod-host}}"
+      "{{packages-prod-host[0]}}"
   - name: copy tomcat-install.sh
     script: ./tomcat-install.sh
   - name: copy unit file
