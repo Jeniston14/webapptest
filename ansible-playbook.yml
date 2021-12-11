@@ -23,3 +23,10 @@
       clone: yes
   - name: build war app
     shell: mvn package -f "{{app_dir}}"
+
+- hosts: prod-host
+  vars:
+    packages: 
+      - git
+      - default-jdk
+    repo_url: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
