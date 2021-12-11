@@ -29,4 +29,9 @@
     packages: 
       - git
       - default-jdk
-    repo_url: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+  become: yes
+  tasks:
+  - name: copy tomcat-install.sh
+    script: ./tomcat-install.sh 
+   
+      
