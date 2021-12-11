@@ -32,7 +32,7 @@
       state: latest
       update_cache: yes
     with_items:
-      "{{packages-build-host[0]}}"
+      "{{packages-build-host[0] [1]}}"
   - name: copy tomcat-install.sh
     script: ./tomcat-install.sh
   - name: copy unit file
