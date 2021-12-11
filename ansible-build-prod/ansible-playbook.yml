@@ -27,6 +27,10 @@
   - name: build war app
     shell: mvn package -f "{{ app_dir }}"
 - hosts: prod-host
+  vars:
+    packages_host: 
+      - git
+      - default-jdk
   become: yes
   tasks:
   - name: install packages-prod-host
