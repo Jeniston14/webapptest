@@ -36,8 +36,9 @@
   - name: copy tomcat-install.sh
     script: ./tomcat-install.sh
   - name: copy unit file
-    src: ./tomcat.service.j2
-    dest: /etc/systemd/system/tomcat.service
+    copy:
+      src: ./tomcat.service.j2
+      dest: /etc/systemd/system/tomcat.service
   - name: Start and enable tomcat
     service:
       name: tomcat
