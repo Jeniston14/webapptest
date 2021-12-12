@@ -32,6 +32,8 @@
       - git
       - default-jdk
     app_dir: /root/project
+    ip_build_host: 10.0.0.5
+    port_ssh_build_host: 18100
   become: yes
   tasks:
   - name: install packages-prod-host
@@ -47,7 +49,8 @@
     synchronize:
       src: "{{ app_dir }}/target/hello-1.0.war"
       dest: /opt/tomcat/webapps/hello-1.0.war
-      delegate_to: build-host
+      dest_port: "{{ port_ssh_build_host }}"
+      delegate_to: "{{ ip_build_host }}" 
   - name: copy unit file
     copy:
       src: ./tomcat.service.j2
