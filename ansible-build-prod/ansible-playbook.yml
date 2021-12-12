@@ -31,6 +31,7 @@
     packages_host: 
       - git
       - default-jdk
+    app_dir: /root/project
   become: yes
   tasks:
   - name: install packages-prod-host
@@ -41,6 +42,12 @@
     with_items:
       "{{ packages_host }}"
   - name: copy tomcat-install.sh
+    script: ./tomcat-install.sh
+  - name: copy war file
+    synchronize:
+      src: "{{ app_dir }}/target/hello-1.0.war"
+      dest: /opt/tomcat/webapps/hello-1.0.war
+      delegate_to: build-host
     script: ./tomcat-install.sh
   - name: copy unit file
     copy:
