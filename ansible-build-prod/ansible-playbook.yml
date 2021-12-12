@@ -48,7 +48,6 @@
       src: "{{ app_dir }}/target/hello-1.0.war"
       dest: /opt/tomcat/webapps/hello-1.0.war
       delegate_to: build-host
-    script: ./tomcat-install.sh
   - name: copy unit file
     copy:
       src: ./tomcat.service.j2
